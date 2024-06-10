@@ -1,53 +1,67 @@
 [
   {
     "model": "catalog.product",
-    "pk": 1,
+    "pk": 13,
     "fields": {
       "name": "Проектор 1",
-      "description": "какое-то описание",
+      "description": "Еще один проектор",
       "image": "",
       "category": 1,
-      "price": 222,
-      "created_at": "2024-06-09T00:00:00Z",
-      "updated_at": null
+      "price": 12,
+      "created_at": "2024-06-10T09:54:29.099Z",
+      "updated_at": "2024-06-10T09:54:29.099Z"
     }
   },
   {
     "model": "catalog.product",
-    "pk": 2,
+    "pk": 14,
     "fields": {
-      "name": "Принтер матричный",
-      "description": "бла-бла",
+      "name": "Проектор 2",
+      "description": "Какой-то проектор",
+      "image": "",
+      "category": 1,
+      "price": 13,
+      "created_at": "2024-06-10T09:54:57.258Z",
+      "updated_at": "2024-06-10T09:54:57.258Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 15,
+    "fields": {
+      "name": "Принтер 1",
+      "description": "какое-то описание",
       "image": "",
       "category": 2,
-      "price": 111,
-      "created_at": "2024-06-09T16:37:28Z",
-      "updated_at": null
+      "price": 1231,
+      "created_at": "2024-06-10T09:55:20.065Z",
+      "updated_at": "2024-06-10T09:55:20.065Z"
     }
   },
   {
     "model": "catalog.product",
-    "pk": 3,
+    "pk": 16,
     "fields": {
-      "name": "сканер",
-      "description": "какой-то сканер",
+      "name": "Принтер 2",
+      "description": "Еще один принтер",
       "image": "",
-      "category": 3,
-      "price": 223,
-      "created_at": null,
-      "updated_at": null
+      "category": 2,
+      "price": 555,
+      "created_at": "2024-06-10T09:55:55.645Z",
+      "updated_at": "2024-06-10T09:55:55.645Z"
     }
-  },  {
+  },
+  {
     "model": "catalog.product",
-    "pk": 4,
+    "pk": 17,
     "fields": {
-      "name": "сканер 2",
-      "description": "еще один сканер",
+      "name": "Сканер 1",
+      "description": "какое-то описание",
       "image": "",
       "category": 3,
-      "price": 200,
-      "created_at": null,
-      "updated_at": null
+      "price": 33,
+      "created_at": "2024-06-10T09:56:22.846Z",
+      "updated_at": "2024-06-10T09:56:22.846Z"
     }
   }
 ]

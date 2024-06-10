@@ -6,7 +6,8 @@ import json
 
 class Command(BaseCommand):
 
-   @staticmethod
+    @staticmethod
+
     def json_read_products():
         with open('product.json', 'rt', encoding="utf-8") as file:
             products_load = file.read()
@@ -29,4 +30,4 @@ class Command(BaseCommand):
                                               updated_at=product['fields']['updated_at']
                                               ))
 
-    Product.objects.bulk_create(product_for_create)
+        Product.objects.bulk_create(product_for_create)
