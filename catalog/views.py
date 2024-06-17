@@ -1,9 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from catalog.models import Product, Contact, Category
+from django import template
 
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    product_list = Product.objects.all()
+
+    context = {
+        'object_list': product_list,
+        'title': 'Главная'
+    }
+    return render(request, 'home.html', context)
 
 
 def contacts(request):
@@ -14,4 +22,19 @@ def contacts(request):
         message = request.POST.get('message')
         print(f'{name}({email}, {phone}): {message}')
 
-    return render(request, 'contacts.html')
+    context = {
+        'title': 'Контакты'
+    }
+
+    return render(request, 'contacts.html', context)
+
+
+def product(request, pk):
+
+    product = get_object_or_404(Product,pk=pk)
+    context = {
+        'product': product,
+        'title': 'Продукт'
+    }
+
+    return render(request, 'product.html', context)

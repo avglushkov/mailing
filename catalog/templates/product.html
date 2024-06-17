@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load my_tags %}
+{% block content %}
+
+<div class="col-sm-4 mb-3 mb-sm-0">
+    <div class="card">
+        <div class="card-body">
+
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p class="card-text">{{ product.price }} руб.</p>
+
+            <a href="#" class="btn btn-outline-success">Купить</a>
+        </div>
+    </div>
+</div>
+<div class="col-lg-4 col-md-6 col-sm-12">
+    <div class="card mb-4 box-shadow">
+
+        <div class="card-body">
+
+            {% if product.image %}
+            <img src={{product.image.url  | media_filter}} class="rounded mx-auto d-block" alt="товар" width="300">
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}
