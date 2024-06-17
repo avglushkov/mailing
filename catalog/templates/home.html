@@ -12,9 +12,7 @@
             <h4 class="card-title">{{object}}</h4>
             <br>
 
-            <div class="text-truncate">
-                {{object.description}}
-            </div>
+            <p>{{object.description | truncatechars:100}}</p>
 
             <br>
             <div align="right">

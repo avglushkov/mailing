@@ -7,8 +7,12 @@
         <div class="card-body">
 
             <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{ product.description }}</p>
-            <p class="card-text">{{ product.price }} руб.</p>
+            <p class="card-text">Категория: {{ product.category }}</p>
+            <p class="card-text">Описание: {{ product.description }}</p>
+            <p class="card-text">Цена: {{ product.price }} руб.</p>
+            <p class="card-text">Запись создана: {{ product.created_at }}</p>
+            <p class="card-text">Запись обновлена: {{ product.updated_at }}</p>
+
 
             <a href="#" class="btn btn-outline-success">Купить</a>
         </div>
