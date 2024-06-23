@@ -1,0 +1,24 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+{% block content %}
+
+<div class="col-6 mb-3 mb-sm-0">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="my-0 font-weight-normal">{{ object.header }}</h4>
+        </div>
+        <div class="card-body">
+            <p> Просмотры: {{ object.views_count }}</p>
+            <p><em>{{ object.slug }}</em></p>
+            <p>{{ object.content }}</p>
+        </div>
+    </div>
+    <div class="col-6 px-3 py-3 pt-md-3 pb-md-4">
+        <img src="/media/{{ object.preview }}" width="150"/>
+    </div>
+
+    <br>
+    <a href="{% url 'catalog:blog_list' %}" class="btn btn-outline-success">Вернуться в список блогов</a>
+</div>
+
+{% endblock %}
