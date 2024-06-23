@@ -1,40 +1,91 @@
 from django.shortcuts import render, get_object_or_404
-from catalog.models import Product, Contact, Category
+from catalog.models import Product, Contact, Blog
 from django import template
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy, reverse
+from pytils.translit import slugify
+from django.core.mail import send_mail
 
 
 # Create your views here.
-def home(request):
-    product_list = Product.objects.all()
 
-    context = {
-        'object_list': product_list,
-        'title': 'Главная'
-    }
-    return render(request, 'home.html', context)
+class ProductListView(ListView):
+    model = Product
+    template_name = 'catalog/home.html'
 
 
-def contacts(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
-        print(f'{name}({email}, {phone}): {message}')
-
-    context = {
-        'title': 'Контакты'
-    }
-
-    return render(request, 'contacts.html', context)
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'catalog/product.html'
 
 
-def product(request, pk):
+class ContactCreateView(CreateView):
+    model = Contact
+    template_name = 'catalog/contacts.html'
+    fields = '__all__'
+    success_url = reverse_lazy('catalog:home')
 
-    product = get_object_or_404(Product,pk=pk)
-    context = {
-        'product': product,
-        'title': 'Продукт'
-    }
 
-    return render(request, 'product.html', context)
+class BlogListView(ListView):
+    model = Blog
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(published=True)
+
+        return queryset
+
+
+class BlogCreateView(CreateView):
+    model = Blog
+    fields = '__all__'
+    success_url = reverse_lazy('catalog:blog_list')
+
+    def form_valid(self, form):
+        new_blog = form.save()
+        new_blog.slug = slugify(new_blog.header)
+        new_blog.save()
+
+        return super().form_valid(form)
+
+
+class BlogDetailView(DetailView):
+    model = Blog
+    fields = '__all__'
+
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        self.object.views_count += 1
+        self.object.save()
+
+        if self.object.views_count == 100:
+            subject = f'{self.object.header} - очень популярный блог'
+            message = f'Количество просмотров блога {self.object.header} превысило 100'
+            from_email = 'djangopost@yandex.ru'
+            recipient_list = ['avgl@mail.ru']
+            send_mail(subject, message, from_email, recipient_list,fail_silently=False)
+
+        return self.object
+
+
+class BlogUpdateView(UpdateView):
+    model = Blog
+    fields = '__all__'
+
+    # success_url = reverse_lazy('catalog:blog_list')
+
+    def form_valid(self, form):
+        new_blog = form.save()
+        new_blog.slug = slugify(new_blog.header)
+        new_blog.save()
+
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('catalog:blog_detail', args=[self.kwargs.get('pk')])
+
+
+class BlogDeleteView(DeleteView):
+    model = Blog
+    success_url = reverse_lazy('catalog:blog_list')
+
