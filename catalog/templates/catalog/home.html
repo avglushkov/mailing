@@ -6,11 +6,18 @@
 <dev>
     <h2 class="my-0 px-3 py-3 pt-md-3 pb-md-4 mr-md-auto font-weight-normal">Продукты</h2>
 </dev>
+<div class="row">
+    <div class="col-sm-12 mb-5">
+        <a class="btn btn-success" href="{% url 'catalog:product_create' %}">Добавить продукт</a>
+    </div>
+
+</div>
+
 
 {% for object in object_list %}
 
 <div class="col-sm-4 mb-3 mb-sm-3">
-    <div class="card" >
+    <div class="card">
         <div class="card-body">
 
 
@@ -18,6 +25,12 @@
             <br>
 
             <p>{{object.description | truncatechars:100}}</p>
+
+            {% for version in actual_version %}
+            {% if version.product_id == object.pk %}
+            <p>Текущая версия: {{ version }}</p>
+            {% endif %}
+            {% endfor %}
 
             <br>
             <div align="right">
@@ -30,6 +43,8 @@
             <br><br>
             <a href="#" class="btn btn-outline-success">Купить</a>
             <a class="btn btn-outline-success" href="{% url 'catalog:product' object.pk %}">Подробнее</a>
+
+
         </div>
     </div>
 </div>

@@ -12,13 +12,13 @@
 <div class="col-sm-4 mb-3 mb-sm-3">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">{{object.header}}</h4>
+            <h4 class="card-title">{{ object.header }}</h4>
             <p class="card-text">{{ object.slug }}</p>
             <p class="card-text">Просмотры: {{ object.views_count }}</p>
             <br>
-            <a class="btn btn-outline-success" href="{% url 'catalog:blog_detail' object.pk %}">Подробнее</a>
-            <a class="btn btn-outline-success" href="{% url 'catalog:blog_form' object.pk %}">Изменить</a>
-            <a class="btn btn-outline-danger" href="{% url 'catalog:blog_confirm_delete' object.pk %}">Удалить</a>
+            <a class="btn btn-outline-success" href="{% url 'blog:detail' object.pk %}">Подробнее</a>
+            <a class="btn btn-outline-success" href="{% url 'blog:update' object.pk %}">Изменить</a>
+            <a class="btn btn-outline-danger" href="{% url 'blog:confirm_delete' object.pk %}">Удалить</a>
 
             <br>
         </div>
