@@ -1,10 +1,10 @@
 {% load my_tags %}
 
 <div class="d-flex flex-column flex-md-row align-items-center p-2 px-md-1 mb-2 bg-white border-bottom box-shadow">
-    <h5 class="my-0 mr-md-auto font-weight-normal">{{title}}</h5>
+    <h3 class="my-0 mr-md-auto font-weight-normal">{{title}}</h3>
     <nav class="ms-5">
-        <a class="btn btn-success" href="/">Каталог</a>
-        <a class="btn btn-success" href="/contacts/">Контакты</a>
-        <a class="btn btn-success" href="/blog">Блоги</a>
+        <a class="btn btn-success" href="{% url 'catalog:home' %}">Каталог</a>
+        <a class="btn btn-success" href="{% url 'catalog:contacts' %}">Контакты</a>
+        <a class="btn btn-success" href="{% url 'blog:blogs' %}">Блоги</a>
     </nav>
 </div>

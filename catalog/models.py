@@ -44,19 +44,17 @@ class Contact(models.Model):
         return self.name
 
 
-class Blog(models.Model):
-    header = models.CharField(max_length=150, verbose_name='Заголовок')
-    slug = models.CharField(blank=True, null=True, max_length=100, verbose_name='Ссылка')
-    content = models.TextField(blank=True, null=True, verbose_name='Содержимое')
-    preview = models.ImageField(upload_to='blogs/', blank=True, null=True, verbose_name='Изображение')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
-    updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
-    published = models.BooleanField(default=False, verbose_name='Признак публикации')
-    views_count = models.IntegerField(default=0, verbose_name='Счетчик просмотров')
+class Version(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.SET_NULL, blank=True, null=True, verbose_name='Продукт')
+    version_number = models.IntegerField(default=1, verbose_name='Номер версии')
+    version_name = models.CharField(max_length=150, verbose_name='Название версии')
+    actual_version = models.BooleanField(default=False,verbose_name='Признак текущей версии')
 
     class Meta:
-        verbose_name = 'Блог'
-        verbose_name_plural = 'Блоги'
+        verbose_name = 'Версия'
+        verbose_name_plural = 'Версии'
 
     def __str__(self):
-        return f'{self.header}'
+        return f'{self.version_number} - {self.version_name}'
+
+
