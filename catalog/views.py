@@ -5,6 +5,7 @@ from django.urls import reverse_lazy, reverse
 from django.core.mail import send_mail
 from django.forms import inlineformset_factory
 from pytils.translit import slugify
+from django.contrib.auth.mixins import LoginRequiredMixin
 from catalog.models import Product, Contact, Version
 from catalog.forms import ProductForm, ContactForm, VersionForm
 
@@ -29,13 +30,15 @@ class ProductDetailView(DetailView):
     template_name = 'catalog/product.html'
     extra_context = {'title': 'Информация о продукте'}
 
-class ProductCreateView(CreateView):
+
+
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:home')
     extra_context = {'title': 'Добавление продукта'}
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:home')
