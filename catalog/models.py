@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 
 # Create your models here.
@@ -20,6 +21,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/', blank=True, null=True, verbose_name='Изображение')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
     price = models.IntegerField(verbose_name='Цена за покупку')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания (записи в БД)')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата изменения (записи в БД)')
 

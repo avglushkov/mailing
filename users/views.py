@@ -21,6 +21,7 @@ class RegisterView(CreateView):
     form_class = UserRegisterForm
     template_name = 'users/register.html'
     success_url = reverse_lazy('users:login')
+    extra_context = {'title': 'Регистрация'}
 
     def form_valid(self, form):
         user = form.save()
@@ -46,7 +47,9 @@ def email_verification(request, token):
     return redirect(reverse('users:login'))
 
 
+
 class ResetPasswordView(TemplateView):
+
     def get(self, request):
         return render(request, 'users/pass_reset.html')
 
@@ -69,6 +72,7 @@ class ResetPasswordView(TemplateView):
 
 
 class ProfileView(UpdateView):
+    extra_context = {'title': 'Профиль'}
     model = User
     form_class = UserProfileForm
     success_url = reverse_lazy('users:profile')

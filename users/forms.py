@@ -2,7 +2,9 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from users.models import User
 from django import forms
-class UserRegisterForm(UserCreationForm):
+from catalog.forms import StyleFormMixin
+
+class UserRegisterForm(StyleFormMixin, UserCreationForm):
 
 
     class Meta:
@@ -10,7 +12,7 @@ class UserRegisterForm(UserCreationForm):
         fields = ('email', 'password1', 'password2')
 
 
-class UserProfileForm(UserChangeForm):
+class UserProfileForm(StyleFormMixin, UserChangeForm):
 
     class Meta:
         model =User

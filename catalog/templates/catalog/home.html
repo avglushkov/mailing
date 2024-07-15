@@ -7,9 +7,11 @@
     <h2 class="my-0 px-3 py-3 pt-md-3 pb-md-4 mr-md-auto font-weight-normal">Продукты</h2>
 </dev>
 <div class="row">
+    {% if user.is_authenticated %}
     <div class="col-sm-12 mb-5">
         <a class="btn btn-success" href="{% url 'catalog:product_create' %}">Добавить продукт</a>
     </div>
+    {% endif %}
 
 </div>
 
