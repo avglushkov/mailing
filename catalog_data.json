@@ -1,0 +1,264 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "category_name": "Проекторы",
+      "category_description": "все проекторы"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "category_name": "Принтеры",
+      "category_description": "все печатающие устройства"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "category_name": "Сканеры",
+      "category_description": "все сканеры"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 13,
+    "fields": {
+      "name": "Проектор Dangbei Marspro2 4K",
+      "description": "Mars Pro 2 - первый в мире проектор с Google TV и встроенным Netflix. Наслаждайтесь любимыми фильмами и сериалами на большом экране с помощью удобного интерфейса Google TV и доступа к обширной библиотеке Netflix. Невероятная яркость: 2450 ISO люменов — это самый яркий проектор Dangbei на сегодняшний день, обеспечивающий яркое и насыщенное изображение даже при дневном освещении.",
+      "image": "products/Dangbey_600x800.webp",
+      "category": 1,
+      "price": 12,
+      "created_at": "2024-06-10T09:54:29.099Z",
+      "updated_at": "2024-06-17T07:19:06.167Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 14,
+    "fields": {
+      "name": "Проектор Xiaomi Mi Smart",
+      "description": "Светодиодный проектор Xiaomi Mi Smart Projector 2 EU BHR5211GL оснащен долговечной ламой LED DLP с яркостью 500ANSI. Разрешение: 1920×1080, соотношение сторон: 1.2:1. Диагональ проекции составляет 60-120 дюймов. Проектор оснащен аудиосистемой с сертификатом Dolby Audio и поддержкой DTS-HD. Среди интерфейсов — HDMI, USB 2.0, 3,5 мм jack. Подключение к источнику сигнала может осуществляться также через Bluetooth и Wi-Fi.",
+      "image": "products/projector3.webp",
+      "category": 1,
+      "price": 13,
+      "created_at": "2024-06-10T09:54:57.258Z",
+      "updated_at": "2024-06-17T07:18:54.222Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 15,
+    "fields": {
+      "name": "Принтер Xiaomi Instant Photo Printer 1S Set EU",
+      "description": "Принтер Xiaomi Instant Photo Printer 1S Set EU Тип носителя: Бумага Xiaomi Instant Photo Paper 3\" и 6\" Особенности: До 256 оттенков на каждый цвет. Автоматическое покрытие фото слоем прозрачной защитной водонепроницаемой пленки. Питание 24V/1.6A",
+      "image": "products/Printer_xiomi600x800.webp",
+      "category": 2,
+      "price": 1231,
+      "created_at": "2024-06-10T09:55:20.065Z",
+      "updated_at": "2024-06-17T07:18:34.856Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 16,
+    "fields": {
+      "name": "Принтер Pantum Pantum P2516",
+      "description": "Основные характеристики Тип устройства принтер Тип печати лазерный Цветность печати черно-белая Максимальный формат A4 Количество страниц в месяц 15000 Область применения малый офис Размещение настольный Функции печати",
+      "image": "products/Pamtum_600x800.webp",
+      "category": 2,
+      "price": 555,
+      "created_at": "2024-06-10T09:55:55.645Z",
+      "updated_at": "2024-06-17T07:18:10.353Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 17,
+    "fields": {
+      "name": "Сканер Canon CanoScan LiDE 300 EU",
+      "description": "Сканер Canon CanoScan LiDE 300 (CIS, A4 Color, 2400*2400dpi, USB2.0, 48bit, не требует б. п.) Этот легкий, компактный и доступный по цене сканер идеально подойдет тем, кому требуется простое сканирование одним нажатием кнопки. Cканер формата A4 со стильным дизайном оснащен 4 кнопками управления EZ, которые позволяют с легкостью использовать устройство и выполнять сканирование. Идеальное решение для сканирования в высоком разрешении дома или в офисе.",
+      "image": "products/Scaner_600x800.webp",
+      "category": 3,
+      "price": 33,
+      "created_at": "2024-06-10T09:56:22.846Z",
+      "updated_at": "2024-06-17T07:17:55.307Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 18,
+    "fields": {
+      "name": "Проектор Dangbei ATOM",
+      "description": "Dangbei Atom - это отличный выбор для создания домашнего кинотеатра. Он обладает яркостью 1200 ISO, проекционным размером от 40 до 180 дюймов и поддерживает голосовое управление на русском языке. Больше никаких усилий для управления устройством! Технология DLP-проекции. Разрешение 1080p. Поддержка Google TV/Google Play/Google APP/Netflix и других функций. 2 ГБ ОЗУ + 32 ГБ ПЗУ",
+      "image": "products/Dangbey_atom_600x800.webp",
+      "category": 1,
+      "price": 313123,
+      "created_at": "2024-06-16T10:11:42.226Z",
+      "updated_at": "2024-06-17T07:17:36.410Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 19,
+    "fields": {
+      "name": "Очень новый сканер",
+      "description": "тест",
+      "image": "products/Dangbey_atom_600x800_uL3eTjL.webp",
+      "category": 3,
+      "price": 111,
+      "created_at": "2024-07-04T17:23:11.609Z",
+      "updated_at": "2024-07-04T17:23:11.609Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 20,
+    "fields": {
+      "name": "бирж",
+      "description": "еуые",
+      "image": "",
+      "category": 1,
+      "price": 2,
+      "created_at": "2024-07-05T09:15:57.749Z",
+      "updated_at": "2024-07-05T09:15:57.749Z"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 21,
+    "fields": {
+      "name": "Это новый проектор",
+      "description": "еуыеавфыва",
+      "image": "",
+      "category": 1,
+      "price": 1,
+      "created_at": "2024-07-06T18:34:42.493Z",
+      "updated_at": "2024-07-06T18:34:42.493Z"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 1,
+    "fields": {
+      "name": "Александр",
+      "phone": "+79999999999",
+      "email": "a@e.ru"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 2,
+    "fields": {
+      "name": "Alexander",
+      "phone": "+79999999999",
+      "email": "av@mail.com"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 3,
+    "fields": {
+      "name": "Alexander",
+      "phone": "+79999999999",
+      "email": "av@mail.com"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 4,
+    "fields": {
+      "name": "Alexander",
+      "phone": "+79999999999",
+      "email": "av@mail.com"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 5,
+    "fields": {
+      "name": "Alexander",
+      "phone": "+79999999999",
+      "email": "av@mail.com"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 6,
+    "fields": {
+      "name": "Alexander",
+      "phone": "+79999999999",
+      "email": "av@mail.com"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 7,
+    "fields": {
+      "name": "Alexander",
+      "phone": "+79999999999",
+      "email": "av@mail.com"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 8,
+    "fields": {
+      "name": "Petr",
+      "phone": "333",
+      "email": "a@e.ru"
+    }
+  },
+  {
+    "model": "catalog.contact",
+    "pk": 9,
+    "fields": {
+      "name": "aaaaa",
+      "phone": "3232",
+      "email": "a@e.ru"
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 1,
+    "fields": {
+      "product": 14,
+      "version_number": 1,
+      "version_name": "версия 05.07.2024",
+      "actual_version": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 2,
+    "fields": {
+      "product": 14,
+      "version_number": 3,
+      "version_name": "New version",
+      "actual_version": false
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 5,
+    "fields": {
+      "product": 18,
+      "version_number": 1,
+      "version_name": "wddads",
+      "actual_version": true
+    }
+  },
+  {
+    "model": "catalog.version",
+    "pk": 6,
+    "fields": {
+      "product": 19,
+      "version_number": 1,
+      "version_name": "new",
+      "actual_version": true
+    }
+  }
+]
