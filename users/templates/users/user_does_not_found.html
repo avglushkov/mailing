@@ -5,22 +5,19 @@
 <div class="col-sm-6 mb-3 mb-sm-0">
     <div class="card">
         <div class="card-header">
-
             <h4 class="card-title">
-                Введите Email и мы вышлем вам новый пароль
+                Пользователь с таким адресом в системе не зарегистрирован
             </h4>
+
         </div>
         <div class="card-body">
 
             <form method="post" enctype="multipart/form-data">
 
                 {% csrf_token %}
-
                 <div class="text-left">
-                    <input type="email" name="email" class="form-control mb-3" placeholder="Email">
-                    <button type="submit" class="btn btn-outline-success">
-                        Восстановить
-                    </button>
+                    <a class="btn btn-outline-success" href="{% url 'users:pass_reset' %}">Попробовать снова</a>
+                    <a class="btn btn-outline-success" href="{% url 'users:register' %}">Зарегистрироваться</a>
                 </div>
             </form>
 
