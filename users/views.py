@@ -1,21 +1,23 @@
 import secrets
 import string
 
+from django import forms
+from django.http import request
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordResetForm
+from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView, LoginView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy, reverse
 from django.core.mail import send_mail
-from django.contrib.auth.hashers import make_password
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 from config.settings import EMAIL_HOST_USER
-from users.forms import UserRegisterForm, UserProfileForm
+from users.forms import UserRegisterForm, UserProfileForm, UserPasswordRecoveryForm
 from users.models import User
 
 
-
-# Create your views here.
 class RegisterView(CreateView):
     model = User
     form_class = UserRegisterForm
@@ -46,29 +48,35 @@ def email_verification(request, token):
     user.save()
     return redirect(reverse('users:login'))
 
-
-
 class ResetPasswordView(TemplateView):
-
-    def get(self, request):
-        return render(request, 'users/pass_reset.html')
+    model = User
+    form_class = PasswordResetForm
+    template_name = 'users/pass_reset.html'
+    success_url = reverse_lazy('users:login')
+    extra_context = {'title': 'Смена пароля'}
 
     def post(self, request, *args, **kwargs):
-        if request.method == 'POST':
-            email = request.POST.get('email')
-
-            new_pass = ''.join(
-                secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in range(10))
+        email = request.POST.get('email')
+        try:
             user = User.objects.get(email=email)
-            user.password = make_password(new_pass, salt=None, hasher='default')
-            user.save()
+            new_pass = User.objects.make_random_password(length=10)
             send_mail(
                 subject='Новый пароль',
                 message=f'Ваш новый пароль: {new_pass}',
                 from_email=EMAIL_HOST_USER,
                 recipient_list=[user.email]
             )
-        return redirect(reverse('users:login'))
+            user.set_password = make_password(new_pass, salt=None, hasher='default')
+            user.save()
+            return redirect(reverse('users:login'))
+        except User.DoesNotExist:
+            return redirect(reverse('users:user_does_not_found'))
+
+
+class UserDoesNotFound(TemplateView):
+    model=User
+    template_name = 'users/user_does_not_found.html'
+    extra_context = {'title': 'Смена пароля'}
 
 
 class ProfileView(UpdateView):
