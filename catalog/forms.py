@@ -71,3 +71,47 @@ class ContactForm(StyleFormMixin, forms.ModelForm):
         fields = '__all__'
 
 
+class ProductModeratorsForm(StyleFormMixin,forms.ModelForm):
+
+    class Meta:
+        model = Product
+        fields = ('is_published','description','category','owner',)
+
+    def clean_name(self):
+        clean_data = self.cleaned_data['name']
+        clean_data_words = clean_data.split()
+        bad_words = ['казино',
+                     'криптовалюта',
+                     'крипта',
+                     'биржа',
+                     'дешево',
+                     'бесплатно',
+                     'обман',
+                     'полиция',
+                     'радар']
+
+        for word in clean_data_words:
+            if word.lower() in bad_words:
+                raise forms.ValidationError(f'Слово {word} не может содержаться в названии продукта')
+
+        return clean_data
+
+    def clean_description(self):
+        clean_data = self.cleaned_data['description']
+        clean_data_words = clean_data.split()
+        bad_words = ['казино',
+                     'криптовалюта',
+                     'крипта',
+                     'биржа',
+                     'дешево',
+                     'бесплатно',
+                     'обман',
+                     'полиция',
+                     'радар']
+
+        for word in clean_data_words:
+            if word.lower() in bad_words:
+                raise forms.ValidationError(f'Слово {word} не может содержаться в описании продукта')
+
+        return clean_data
+

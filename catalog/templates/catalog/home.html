@@ -37,6 +37,7 @@
             <br>
             <div align="right">
                 <p class="fs-3"> {{object.price}} руб.</p>
+
             </div>
 
             {% if object.image %}
@@ -45,7 +46,9 @@
             <br><br>
             <a href="#" class="btn btn-outline-success">Купить</a>
             <a class="btn btn-outline-success" href="{% url 'catalog:product' object.pk %}">Подробнее</a>
-
+            {% if perms.catalog.change_product or user == object.owner %}
+            <a class="btn btn-outline-warning" href="{% url 'catalog:product_update' object.pk %}">Изменить</a>
+            {% endif %}
 
         </div>
     </div>
