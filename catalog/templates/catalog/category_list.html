@@ -1,0 +1,22 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+
+{% block content %}
+
+<dev>
+    <h2 class="my-0 px-3 py-3 pt-md-3 pb-md-4 mr-md-auto font-weight-normal">Категории продуктов</h2>
+</dev>
+
+{% for object in object_list %}
+<div class="col-3">
+    <div class="card mx-auto mt-3" style="width: 18rem;">
+        <div class="card-body">
+            <h4 class="card-title">{{ object.category_name }}</h4>
+            <p class="card-text">{{ object.category_description }}</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+
+{% endblock %}

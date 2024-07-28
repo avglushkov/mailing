@@ -8,8 +8,10 @@ from django.forms import inlineformset_factory
 from pytils.translit import slugify
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
-from catalog.models import Product, Contact, Version
+
+from catalog.models import Product, Contact, Version, Category
 from catalog.forms import ProductForm, ContactForm, VersionForm, ProductModeratorsForm
+from catalog.services import get_category_list, get_product_list
 
 
 # Create your views here.
@@ -23,6 +25,8 @@ class ProductListView(ListView):
         context_data = super().get_context_data(*args, **kwargs)
         actual_versions = Version.objects.filter(actual_version=True)
         context_data['actual_version'] = actual_versions
+        context_data['product_list'] = get_product_list()
+
 
         return context_data
 
@@ -78,3 +82,17 @@ class ContactCreateView(CreateView):
     form_class = ContactForm
     success_url = reverse_lazy('catalog:home')
     extra_context = {'title': 'Добавление контакта'}
+
+class CategoryListView(ListView):
+    model = Category
+    # template_name = 'catalog/category_list'
+    extra_context = {'title': 'Категории продуктов'}
+
+
+    def get_context_data(self, *args, **kwargs):
+        context_data = super().get_context_data(*args, **kwargs)
+        context_data['category_list'] = get_category_list()
+
+        return context_data
+
+
