@@ -18,6 +18,7 @@ class UserProfileForm(StyleFormMixin, UserChangeForm):
         fields = ('email', 'first_name', 'last_name', 'avatar')
 
 
+
 class UserPasswordRecoveryForm(forms.ModelForm):
     class Meta:
         model = User
